@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+
+    <div class="navbar-header">
+      <%= link_to('Gazooyr', root_path, class: "navbar-brand") %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'Stream', gazooies_path %></li>
+        <li><%= link_to 'Actualites', news_index_path %></li>
+
+        <% if user_signed_in? %>
+        Bienvenue !
+         <% end %>
+          <% if user_signed_in? %>
+          <li><a href="#" data-toggle="modal" data-target="#gazooyModal">Gazooyer</a></li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+            <li>  <a style="pointer-events: none;cursor: default">Connecté en tant que  <strong><%= current_user.email %></strong> </a></li>
+            <li class="dropdown" >
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="account-dropdown"  role="button" >
+                <span class="glyphicon glyphicon-cog"></span><span class="caret"></span>
+              </a>
+              
+                <li><a href="/users/edit">Mon Compte</a></li>
+              
+            </li>
+            <li> <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, :class => 'navbar-link', :id =>'logout'  %></li>
+             <li> <%= link_to "Quitter Gazooyr", user_path(current_user), :class => 'navbar-link',  method: :delete  %></li>
+        <% else %>
+            <li> <a style="pointer-events: none;cursor: default">Déconnecté</a> </li>
+            <li> <%= link_to "S'enregistrer", new_user_registration_path, :class => 'navbar-link'  %> </li>
+            <li>   <%= link_to "Connexion", new_user_session_path, :class => 'navbar-link'  %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

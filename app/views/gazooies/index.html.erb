@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Gazooies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Text</th>
+      <th>Reply to</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gazooies.each do |gazooie| %>
+      <tr>
+        <td><%= gazooie.user_id %></td>
+        <td><%= gazooie.text %></td>
+        <td><%= gazooie.reply_to_id %></td>
+        <td><%= link_to 'Show', gazooie %></td>
+        <td><%= link_to 'Edit', edit_gazooie_path(gazooie) %></td>
+        <td><%= link_to 'Destroy', gazooie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if user_signed_in? %>
+  <%= link_to 'New Gazooie', new_gazooie_path %>
+<% end %>
+

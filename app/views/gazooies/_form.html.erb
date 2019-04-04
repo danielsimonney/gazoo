@@ -1,0 +1,29 @@
+<%= form_with(model: gazooie, local: true) do |form| %>
+  <% if gazooie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(gazooie.errors.count, "error") %> prohibited this gazooie from being saved:</h2>
+
+      <ul>
+      <% gazooie.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reply_to_id %>
+    <%= form.number_field :reply_to_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

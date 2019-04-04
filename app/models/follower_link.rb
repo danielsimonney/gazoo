@@ -1,0 +1,2 @@
+class FollowerLink < ApplicationRecord
+end
